@@ -1,0 +1,1142 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MSS26 Module 2 Study Guide | Geodesy & Remote Sensing</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Overpass:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* French Flag Palette via Shademaster Structure */
+            --primary-blue: #002654; /* Deep Navy for Text/Headers */
+            --french-blue: #0055A4;  /* Flag Blue for Highlights */
+            --french-red: #EF4135;   /* Flag Red for Accents/Buttons */
+            --white: #FFFFFF;
+            --light-gray: #F4F6F8;   /* Alternating Section Background */
+            --text-main: #2C2E35;    /* Dark Charcoal for readability */
+            --border-color: #E2E8F0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif; /* Shademaster Body Font */
+            line-height: 1.8;
+            color: var(--text-main);
+            background-color: var(--white);
+            font-size: 16px;
+        }
+
+        h1, h2, h3, h4, .nav-link, .video-label, .term {
+            font-family: 'Overpass', sans-serif; /* Shademaster Header Font */
+            color: var(--primary-blue);
+            font-weight: 700;
+            text-transform: uppercase; /* Shademaster Style */
+            letter-spacing: 0.5px;
+        }
+
+        /* Header - Two Tier Style */
+        header {
+            background: var(--white);
+            color: var(--primary-blue);
+            padding: 2rem 0;
+            text-align: center;
+            border-bottom: 4px solid var(--french-red); /* French Touch */
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 900;
+            color: var(--french-blue);
+        }
+
+        header p {
+            font-family: 'Overpass', sans-serif;
+            font-size: 1.1rem;
+            color: var(--text-main);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Container - Wide Layout */
+        .container {
+            max-width: 1400px; /* Wider like Shademaster */
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Navigation - Sticky Top Bar style */
+        .nav-bar {
+            background: var(--primary-blue);
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: white;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .nav-link:hover {
+            color: var(--french-red);
+        }
+
+        /* Sections - Alternating Backgrounds */
+        section {
+            padding: 5rem 2rem; /* Shademaster generous padding */
+            background: var(--white);
+            margin: 0;
+            border-radius: 0; /* Shademaster sharp corners */
+            box-shadow: none; /* Flat design */
+        }
+
+        section:nth-of-type(even) {
+            background-color: var(--light-gray); /* Grey Alternating */
+        }
+
+        section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--primary-blue);
+            position: relative;
+            display: inline-block;
+            border-bottom: none; /* Remove old style */
+        }
+        
+        /* Red underline accent for H2 */
+        section h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--french-red);
+            margin-top: 10px;
+        }
+
+        section h3 {
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem;
+            color: var(--french-blue);
+            text-transform: none; /* Keep subheads readable */
+            font-weight: 700;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            max-width: 800px;
+        }
+
+        /* Tables - Clean & Modern */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: white;
+            font-family: 'Open Sans', sans-serif;
+            border: 1px solid var(--border-color);
+        }
+
+        th {
+            background-color: var(--primary-blue);
+            color: white;
+            text-transform: uppercase;
+            font-family: 'Overpass', sans-serif;
+            letter-spacing: 1px;
+            padding: 1.2rem;
+        }
+
+        td {
+            padding: 1.2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        /* Images - Sharp Edges */
+        .visual-aid {
+            text-align: center;
+            margin: 3rem 0;
+            background: transparent;
+            padding: 0;
+            border: none;
+        }
+
+        .visual-aid img {
+            max-width: 100%;
+            border-radius: 0; /* Shademaster Sharpness */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08); /* Subtle premium shadow */
+        }
+
+        .visual-aid figcaption {
+            margin-top: 1rem;
+            font-family: 'Overpass', sans-serif;
+            font-weight: 600;
+            color: var(--french-blue);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        /* Learning Objectives Box */
+        .objectives {
+            background-color: var(--french-blue);
+            color: white;
+            padding: 3rem;
+            border-radius: 0; /* Sharp */
+            margin-bottom: 3rem;
+        }
+
+        .objectives h3 {
+            color: white;
+            border-bottom: 1px solid rgba(255,255,255,0.3);
+            padding-bottom: 1rem;
+            margin-top: 0;
+        }
+
+        /* Callout Boxes */
+        .callout {
+            padding: 2rem;
+            border-radius: 0;
+            border-left: 6px solid;
+            background-color: white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin: 2rem 0;
+        }
+
+        .callout-info { border-color: var(--french-blue); }
+        .callout-formula { 
+            border-color: var(--french-red); 
+            background: #FFF5F5;
+            font-family: 'Overpass', sans-serif;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--primary-blue);
+            text-align: center;
+        }
+        .callout-tip { border-color: var(--primary-blue); background: #F4F6F8; }
+
+        /* Video Grid */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Bigger cards */
+            gap: 2rem;
+        }
+
+        .video-card {
+            border-radius: 0; /* Sharp */
+            border: none;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        /* Practice Questions - Accordion */
+        details {
+            background-color: white;
+            border: 1px solid var(--border-color);
+            border-radius: 0;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        summary {
+            font-family: 'Overpass', sans-serif;
+            color: var(--primary-blue);
+            font-size: 1.1rem;
+        }
+        
+        summary::after {
+            color: var(--french-red); /* Red + icon */
+        }
+
+        /* Hero Banner */
+        .hero-banner {
+            width: 100%;
+            height: 400px;
+            background-image: url('images/satellite_banner.png');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(0,38,84,0.3) 0%, rgba(0,38,84,0.7) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 2rem;
+        }
+        
+        /* Force Banner Text Check */
+        .hero-overlay h1 {
+            color: white !important;
+            font-size: 3.5rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            margin-bottom: 0.5rem;
+        }
+        
+        .hero-overlay p {
+            color: white !important;
+            text-shadow: 0 1px 5px rgba(0,0,0,0.3);
+        }
+
+        /* 2-Column Side-by-Side Layout */
+        .content-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin: 3rem 0;
+        }
+        
+        /* Mobile Responsiveness for Grid */
+        @media (max-width: 900px) {
+            .content-split {
+                grid-template-columns: 1fr; /* Stack on mobile */
+                gap: 2rem;
+            }
+            
+            section h2 {
+                font-size: 2rem;
+            }
+            
+            header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-banner {
+                height: 300px;
+            }
+        }
+
+        /* Mobile Menu */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            z-index: 2000;
+            background: rgba(0, 38, 84, 0.8);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+        }
+
+        @media (max-width: 900px) {
+            .nav-bar {
+                flex-direction: column;
+                gap: 1rem;
+                display: none; /* Hidden by default on mobile */
+                width: 100%;
+                top: 60px; /* Below header */
+            }
+
+            .nav-bar.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+        }
+    </style>
+    <script>
+        function toggleMenu() {
+            document.querySelector('.nav-bar').classList.toggle('active');
+        }
+    </script>
+  </head>
+  <body>
+    <!-- Mobile Menu Button -->
+    <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle Menu">☰ Menu</button>
+  
+    <!-- Full Width Hero Banner -->
+    <div class="hero-banner">
+        <div class="hero-overlay">
+            <h1>Module 2 Study Guide</h1>
+            <p>Geodesy, Remote Sensing & GIS</p>
+            <p style="margin-top: 1rem; font-size: 0.9rem; letter-spacing: 1px;">Dr. Anwar Sounny-Slitine | Spring 2026</p>
+        </div>
+    </div>
+
+    <div class="container">
+      <nav class="nav-bar">
+        <a href="#geodesy" class="nav-link">Geodesy & Mapping</a>
+        <a href="#remote-sensing" class="nav-link">Remote Sensing</a>
+        <a href="#analysis" class="nav-link">Data Analysis</a>
+        <a href="#formulas" class="nav-link">Formulas</a>
+        <a href="#videos" class="nav-link">Videos</a>
+        <a href="#questions" class="nav-link">Practice</a>
+        <a href="#glossary" class="nav-link">Glossary</a>
+      </nav>
+
+      <!-- INTRODUCTION -->
+      <section id="intro" style="text-align: center; padding: 4rem 2rem; background-color: white;">
+          <h2 style="border: none; font-size: 2.2rem; margin-bottom: 1rem;">Welcome, Future Space Leaders! 🚀</h2>
+          <p style="margin: 0 auto; max-width: 800px; font-size: 1.1rem; color: #555;">
+              This guide is designed to help you master the core concepts of <strong>Geodesy, Remote Sensing, and GIS</strong> for Module 2. 
+              Review the key topics, watch the lecture videos, and test yourself with the practice scenarios below.
+          </p>
+          <p style="margin: 1rem auto 0; font-weight: bold; color: var(--french-blue);">
+              Good luck with your studies and the upcoming exam!
+          </p>
+      </section>
+
+      <!-- SECTION 1: GEODESY -->
+      <section id="geodesy">
+        <h2>1. Geodesy & The "Lies" of Mapping</h2>
+
+        <div class="objectives">
+          <h3>🎯 Learning Objectives</h3>
+          <ul class="checkbox-list">
+            <li><input type="checkbox" /> I can explain why "all maps are lies" (generalization, classification, projection).</li>
+            <li><input type="checkbox" /> I can describe the 3 Earth models (Sphere, Ellipsoid, Geoid).</li>
+            <li><input type="checkbox" /> I can list the 4 map distortions.</li>
+          </ul>
+        </div>
+
+        <!-- Split Layout: Geodesy & Earth Models -->
+        <div class="content-split">
+            <div>
+                <h3>The Three Layers of Location</h3>
+                <p>To define a location on Earth, we need three stacked layers:</p>
+                <ol>
+                  <li><strong>Geodesy:</strong> Modeling the Earth's shape (Ellipsoid).</li>
+                  <li><strong>Coordinate System:</strong> A grid for address (Lat/Long).</li>
+                  <li><strong>Map Projection:</strong> Flattening the 3D grid to 2D.</li>
+                </ol>
+                <div class="callout callout-info">
+                   <strong>The Math of Height:</strong><br>
+                   h = H + N<br>
+                   <em>Ellipsoidal Height (h) = Orthometric Height (H) + Geoid Undulation (N)</em>
+                </div>
+            </div>
+            <div class="visual-aid">
+              <img src="images/geoid_height_diagram.png" alt="Diagram showing relationship between Topography, Geoid, and Ellipsoid" />
+              <figcaption>Figure 1: The Geoid (Mean Sea Level) vs. The Reference Ellipsoid.</figcaption>
+            </div>
+        </div>
+
+        <!-- Split Layout: Coordinate Systems -->
+        <div class="content-split">
+            <div class="visual-aid">
+              <img src="images/latitude_vs_longitude.png" alt="Latitude vs Longitude Diagram" />
+              <figcaption>Figure 2: Latitude (Parallels) vs. Longitude (Meridians).</figcaption>
+            </div>
+            <div>
+                <h3>Coordinate Systems</h3>
+                <p><strong>Latitude (Phi):</strong> Measures angle North/South of the Equator. Lines are parallel "rungs on a ladder".</p>
+                <p><strong>Longitude (Lambda):</strong> Measures angle East/West of the Prime Meridian. Lines converge at the poles (like orange slices).</p>
+            </div>
+        </div>
+
+        <!-- Split Layout: Map Projections -->
+        <div class="content-split">
+            <div>
+                <h3>Map Projections & Distortions</h3>
+                <p>It is impossible to flatten a round earth without distortion. Projections are classified by the surface they use:</p>
+                <ul>
+                    <li><strong>Cylindrical:</strong> Good for Equatorial regions (e.g., Mercator).</li>
+                    <li><strong>Conic:</strong> Good for Mid-latitudes (e.g., Albers, LCC).</li>
+                    <li><strong>Azimuthal (Planar):</strong> Good for Polar regions.</li>
+                </ul>
+            </div>
+            <div class="visual-aid">
+              <img src="images/projection_families.png" alt="Cylindrical, Conical, and Azimuthal Projections" />
+              <figcaption>Figure 3: The Three Projection Families.</figcaption>
+            </div>
+        </div>
+
+        <h3>Classes of Map Projections</h3>
+        <p>Projections are also defined by <em>what</em> they preserve:</p>
+        <table>
+            <tr>
+                <th>Property</th>
+                <th>Preserves...</th>
+                <th>Use Case</th>
+                <th>Example</th>
+            </tr>
+            <tr>
+                <td><strong>Conformal</strong></td>
+                <td><strong>Angles & Shapes</strong> (Locally)</td>
+                <td>Navigation, Topographic Maps</td>
+                <td>Mercator, Lambert Conformal Conic</td>
+            </tr>
+            <tr>
+                <td><strong>Equal Area (Equivalent)</strong></td>
+                <td><strong>Areas</strong></td>
+                <td>Thematic Maps (Population density, Land cover) whereby comparing size is critical.</td>
+                <td>Albers Equal Area Conic</td>
+            </tr>
+            <tr>
+                <td><strong>Equidistant</strong></td>
+                <td><strong>Distance</strong> (from a specific point)</td>
+                <td>Radio ranges, Air travel distances</td>
+                <td>Azimuthal Equidistant</td>
+            </tr>
+        </table>
+
+        <div class="content-split">
+             <div class="visual-aid">
+              <img src="images/mercator_diagram.png" alt="How the Mercator Projection works" />
+              <figcaption>Figure 4: The Mercator Projection (Cylindrical).</figcaption>
+            </div>
+             <div>
+                <h3>Spotlight: The Mercator Projection</h3>
+                <p>The Mercator is a <strong>Cylindrical Conformal</strong> projection.</p>
+                <ul>
+                    <li><strong>Pro:</strong> Preserves direction. A straight line is a constant compass bearing (Rhumb Line). Essential for sailors.</li>
+                    <li><strong>Con:</strong> Distorts area massively at the poles. Greenland looks as big as Africa (it's actually 14x smaller).</li>
+                </ul>
+                <a href="https://sounny.github.io/mercatorpuzzle/" target="_blank" style="color: var(--french-red); font-weight: bold; text-decoration: none; display: block; margin-top: 1rem;">➜ Play: The Mercator Puzzle Game</a>
+            </div>
+        </div>
+        
+        <!-- MAUP Section -->
+        <h3>The Modifiable Areal Unit Problem (MAUP)</h3>
+        <p>Map results can change dramatically based solely on how you draw the boundaries. This is the "Gerrymandering" of geography.</p>
+        
+        <div class="content-split">
+            <div>
+                 <p><strong>The Problem:</strong> The same underlying data can yield completely opposite results depending on aggregation zones.</p>
+                 <ul>
+                     <li><strong>Scenario 1 (Blue Wins):</strong> Grouping into vertical rows makes Blue the majority in every district.</li>
+                     <li><strong>Scenario 2 (Red Wins):</strong> "Creative" shape drawing (Gerrymandering) packs Blue into fewer districts, allowing Red to win the majority.</li>
+                 </ul>
+                 <div class="callout callout-tip">
+                  <strong>Key Takeaway:</strong> Be skeptical of maps that aggregate data into arbitrary units (like zip codes or counties). Are the boundaries masking the truth?
+                </div>
+            </div>
+             <div class="visual-aid">
+              <img src="images/maup_example.png" alt="Diagram showing how redistricting changes election results" />
+              <figcaption>Figure 5: MAUP in action - "How to Steal an Election".</figcaption>
+            </div>
+        </div>
+
+        <h3>Limits of Representation: Eye, Mind, and Color</h3>
+        <p>
+          Effective mapping requires understanding the limitations of the user and the technology.
+        </p>
+        <table>
+          <tr>
+            <th>Limit</th>
+            <th>Concept</th>
+            <th>Implication for Mapping</th>
+          </tr>
+          <tr>
+            <td><strong>Eye Limit</strong></td>
+            <td><strong>Visual Acuity & Distinction</strong><br>The human eye has a limit to the detail (spatial resolution) and the number of colors it can distinguish.</td>
+            <td>
+              Don't display data at a higher resolution than the screen/eye can resolve. <br>
+              While 8-bit offers 16.7M colors, we can only distinguishing ~10M.
+            </td>
+          </tr>
+          <tr>
+            <td><strong>Mind's Limit</strong></td>
+            <td><strong>Cognitive Load (Miller's Law)</strong><br>The human brain can only hold about 7 (±2) items in working memory.</td>
+            <td>
+              <strong>Classification Rule:</strong> Never use more than 5-7 classes in a Choropleth map. Users cannot distinguish or remember 12 different shades of blue.
+            </td>
+          </tr>
+          <tr>
+            <td><strong>Color Limit</strong></td>
+            <td><strong>Bit Depth (0-255)</strong><br>Digital images are limited by their bit depth.</td>
+            <td>
+              Computers bin the infinite continuity of reality into discrete integers (0-255 for 8-bit). We lose slight variations to "quantization."<br>
+              <a href="https://sounny.github.io/colorbrewer/" target="_blank" style="color: var(--french-red); font-weight: bold; text-decoration: none;">➜ Explore Color Brewer Tool</a>
+            </td>
+          </tr>
+        </table>
+      </section>
+
+      <!-- SECTION 2: REMOTE SENSING -->
+      <section id="remote-sensing">
+        <h2>2. Remote Sensing Fundamentals</h2>
+
+        <div class="objectives">
+          <h3>🎯 Learning Objectives</h3>
+          <ul class="checkbox-list">
+            <li>
+              <input type="checkbox" /> I can define the 4 Resolutions (Spatial,
+              Spectral, Temporal, Radiometric).
+            </li>
+            <li>
+              <input type="checkbox" /> I can interpret a spectral signature
+              graph.
+            </li>
+            <li>
+              <input type="checkbox" /> I can distinguish between Active and
+              Passive sensors.
+            </li>
+            <li>
+              <input type="checkbox" /> I can explain how to create a False
+              Color Composite.
+            </li>
+          </ul>
+        </div>
+
+        <h3>The 4 Resolutions</h3>
+        <table>
+          <tr>
+            <th>Resolution</th>
+            <th>Definition</th>
+            <th>Example</th>
+          </tr>
+          <tr>
+            <td><strong>Spatial</strong></td>
+            <td>Pixel size on ground</td>
+            <td>30m (Landsat) vs 1m (Aerial)</td>
+          </tr>
+          <tr>
+            <td><strong>Spectral</strong></td>
+            <td>Number/width of bands</td>
+            <td>Multispectral (10 bands) vs Hyperspectral (200 bands)</td>
+          </tr>
+          <tr>
+            <td><strong>Temporal</strong></td>
+            <td>Revisit time</td>
+            <td>Daily (Weather) vs 16 days (Landsat)</td>
+          </tr>
+          <tr>
+            <td><strong>Radiometric</strong></td>
+            <td>Sensitivity (bit depth)</td>
+            <td>8-bit (256 levels) vs 12-bit (4096 levels)</td>
+          </tr>
+        </table>
+
+        <h3>Spectral Signatures</h3>
+        <p>
+          Every material reflects light differently. This "signature" allows us
+          to identify materials.
+        </p>
+
+        <div class="visual-aid">
+          <img
+            src="images/spectral_signatures.png"
+            alt="Spectral Signatures Graph"
+          />
+          <figcaption>
+            Figure 4: Healthy vegetation reflects GREEN and very strong NIR.
+            Water absorbs almost everything.
+          </figcaption>
+        </div>
+
+        <div class="callout callout-info">
+          <strong>Active vs. Passive Sensors</strong><br />
+          <ul>
+            <li>
+              <strong>Passive:</strong> Uses sun's energy (Photography,
+              Landsat). No data at night.
+            </li>
+            <li>
+              <strong>Active:</strong> Sends own energy pulse (LiDAR, Radar).
+              Works day/night and through clouds (Radar).
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- SECTION 3: DATA ANALYSIS -->
+      <section id="analysis">
+        <h2>3. Data Models & Analysis</h2>
+
+        <div class="objectives">
+          <h3>🎯 Learning Objectives</h3>
+          <ul class="checkbox-list">
+            <li>
+              <input type="checkbox" /> I can calculate and interpret NDVI.
+            </li>
+            <li>
+              <input type="checkbox" /> I can compare Raster vs. Vector data
+              models.
+            </li>
+            <li>
+              <input type="checkbox" /> I can explain Supervised vs.
+              Unsupervised Classification.
+            </li>
+          </ul>
+        </div>
+
+        <h3>Raster vs. Vector</h3>
+        <table>
+          <tr>
+            <th>Model</th>
+            <th>Best For...</th>
+            <th>Example</th>
+          </tr>
+          <tr>
+            <td><strong>Raster</strong></td>
+            <td>Continuous data</td>
+            <td>Elevation, Temperature, Satellite Imagery</td>
+          </tr>
+          <tr>
+            <td><strong>Vector</strong></td>
+            <td>Discrete data</td>
+            <td>Roads, Property Lines, Cities</td>
+          </tr>
+        </table>
+
+        <h3>NDVI (Vegetation Index)</h3>
+        <p>
+          Uses the contrast between RED (absorbed by plants) and NIR (reflected
+          by plants) to measure health.
+        </p>
+        <div class="callout callout-formula">
+          NDVI = (NIR - Red) / (NIR + Red)
+        </div>
+        <p><strong>Interpretation:</strong></p>
+        <ul>
+          <li><strong>> 0.5:</strong> Healthy Vegetation</li>
+          <li><strong>0.1 - 0.2:</strong> Bare Soil</li>
+            <li><strong>&lt; 0:</strong> Non-vegetated and Impervious Land Cover (Water, Concrete, Snow)</li>
+        </ul>
+      </section>
+
+      <!-- FORMULA SHEET -->
+      <section id="formulas">
+        <h2>📐 Formula Sheet</h2>
+        <div class="callout callout-formula">
+          DMS to DD Conversion<br />
+          DD = Degrees + (Minutes / 60) + (Seconds / 3600)<br />
+          <span style="font-size: 0.9rem; color: #666; font-weight: normal"
+            >*Make negative for South or West!</span
+          >
+        </div>
+        <div class="callout callout-formula">
+          NDVI<br />
+          NDVI = (NIR - Red) / (NIR + Red)
+        </div>
+        <div class="callout callout-formula">
+          Eratosthenes' Calculation<br />
+          Circumference = Distance × (360° / Shadow Angle)
+        </div>
+        <div class="callout callout-formula">
+          8-bit Image Colors<br />
+          2⁸ = 256 levels (0-255) per channel
+        </div>
+      </section>
+
+      </section>
+
+      <!-- VIDEO LECTURES -->
+      <section id="videos">
+        <h2>📺 Video Lecture Library</h2>
+        <p>Review key concepts with these selected video lectures.</p>
+        
+        <div class="callout callout-info" style="text-align: center; margin-bottom: 3rem;">
+            <strong>Additional Resources:</strong><br>
+            <a href="https://sounny.github.io/rsgee/" target="_blank" style="font-size: 1.2rem; color: var(--french-red); font-weight: bold; text-decoration: none;">➜ Look at Weeks 1 and 2 on "Think" (RSGEE)</a>
+        </div>
+        
+        <div class="video-grid">
+            <!-- Video 1 -->
+            <div class="video-card">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/Jgvi2dTjP2A?si=-ud8x9ZFS1ZR90RD" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+                <div class="video-label">Core Concepts 1</div>
+            </div>
+
+            <!-- Video 2 -->
+            <div class="video-card">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/fiqbvt06nRE?si=zDDHm-EsUm5xyS_F" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+                <div class="video-label">Core Concepts 2</div>
+            </div>
+
+            <!-- Video 3 -->
+            <div class="video-card">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/dHT0ckOfScU?si=80VbujFqwyJ58ohk" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+                <div class="video-label">Geodesy & Mapping</div>
+            </div>
+
+            <!-- Video 4 -->
+            <div class="video-card">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/BopzJ4rXoPA?si=XZBCcyDKKYQyD-FR" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+                <div class="video-label">Remote Sensing Basics</div>
+            </div>
+
+            <!-- Video 5 -->
+            <div class="video-card">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/MRIDi5hq-MI?si=AZSMFrafeWsFo2Bo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+                <div class="video-label">Coordinate Systems</div>
+            </div>
+
+            <!-- Video 6 -->
+            <div class="video-card">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/8K0fRogYpK4?si=Hxm6bniiYipOGxks" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+                <div class="video-label">Map Projections</div>
+            </div>
+
+            <!-- Video 7 -->
+            <div class="video-card">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/hdKY9tNmnoI?si=0rKQgD3WQnGja7qN" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+                <div class="video-label">NDVI & Spectral Analysis</div>
+            </div>
+
+            <!-- Video 8 -->
+            <div class="video-card">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/EbIVDrajHxo?si=YFFKGyMYIxQDeujg" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+                <div class="video-label">Classification</div>
+            </div>
+
+            <!-- Video 9 -->
+            <div class="video-card">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/JEra29JSwIw?si=dtffOHKGV7MGo_sA" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+                <div class="video-label">Advanced Applications</div>
+            </div>
+        </div>
+      </section>
+
+      <!-- PRACTICE QUESTIONS -->
+      <section id="questions">
+        <h2>📝 Practice Questions</h2>
+        <p><em>Test yourself! Click to reveal the answer.</em></p>
+
+        <details>
+          <summary>
+            1. A satellite image has a <strong>Spatial Resolution</strong> of 30
+            meters. What does this mean?
+          </summary>
+          <div class="answer-key">
+            Each pixel in the image represents a 30m x 30m square area on the
+            ground. You cannot distinguish objects smaller than this size.
+          </div>
+        </details>
+
+        <details>
+          <summary>
+            2. Calculate the NDVI for a pixel with Red=0.1 and NIR=0.5.
+          </summary>
+          <div class="answer-key">
+            NDVI = (0.5 - 0.1) / (0.5 + 0.1) = 0.4 / 0.6 = <strong>0.66</strong
+            ><br />
+            This indicates <strong>healthy vegetation</strong>.
+          </div>
+        </details>
+
+        <details>
+          <summary>
+            3. Why do we divide by (NIR + Red) in the NDVI formula?
+          </summary>
+          <div class="answer-key">
+            To <strong>normalize</strong> the data. This scales the result
+            between -1 and +1, allowing us to compare images taken at different
+            times of day or seasons without lighting differences ruining the
+            comparison.
+          </div>
+        </details>
+
+        <details>
+          <summary>
+            4. Name one advantage of LiDAR (Active) over standard Satellite
+            Imagery (Passive).
+          </summary>
+          <div class="answer-key">
+            LiDAR can penetrate gaps in forest canopy to measure the ground
+            ("bare earth" model) using multiple returns. It also works at night!
+          </div>
+        </details>
+
+        <details>
+          <summary>
+            5. You want to map specific tree species in a forest. Which type of
+            resolution is most critical?
+          </summary>
+          <div class="answer-key">
+            <strong>Spectral Resolution</strong>. You need many narrow bands
+            (Hyperspectral) to detect the subtle "signature" differences between
+            tree species.
+          </div>
+        </details>
+
+        <details>
+          <summary>6. Convert 30° 30' 00" West to Decimal Degrees.</summary>
+          <div class="answer-key">
+            30 mins / 60 = 0.5 deg.<br />
+            Total = 30.5.<br />
+            Since it is WEST, it must be negative.<br />
+            <strong>Answer: -30.50</strong>
+          </div>
+        </details>
+
+        <details>
+            <summary>7. Explain the evolution of Earth Models (Sphere -> Ellipsoid -> Geoid).</summary>
+            <div class="answer-key">
+                <ul>
+                    <li><strong>Sphere:</strong> Simple, used for small scales (globes). Inaccurate for GPS.</li>
+                    <li><strong>Ellipsoid (WGS 84):</strong> Flattens at poles due to rotation (Centrifugal Force). Used for GPS coordinates.</li>
+                    <li><strong>Geoid:</strong> "Lumpy" model based on gravity/sea level. The most accurate representation of Earth's true shape.</li>
+                </ul>
+            </div>
+        </details>
+
+        <details>
+            <summary>8. Compare SRTM (30m) vs. LiDAR (1m) for flood mapping.</summary>
+            <div class="answer-key">
+                <strong>SRTM (30m)</strong> is too coarse; it might miss small levees or channels, leading to inaccurate flood predictions.<br>
+                <strong>LiDAR (1m)</strong> captures micro-topography, allowing for precise modeling of water flow and flood risks in urban areas.
+            </div>
+        </details>
+
+        <details>
+            <summary>9. What are the trade-offs between Drone (SfM) and Satellite Imagery?</summary>
+            <div class="answer-key">
+                <strong>Drone (SfM):</strong> High resolution (cm-level), flexible timing, but small coverage area and short battery life.<br>
+                <strong>Satellite:</strong> Global coverage, consistent revisit times, but lower resolution and subject to cloud cover.
+            </div>
+        </details>
+        <details>
+            <summary>10. What is a Geodetic Datum (e.g., WGS 84)?</summary>
+            <div class="answer-key">
+                A reference system that defines the size/shape of the Earth (Ellipsoid) and its position relative to the center of the Earth. It "anchors" coordinates to the planet.
+            </div>
+        </details>
+
+        <details>
+            <summary>11. Explain the difference between Raster and Vector data.</summary>
+            <div class="answer-key">
+                <strong>Raster:</strong> Grid of pixels (best for continuous data like elevation/imagery).<br>
+                <strong>Vector:</strong> Points, lines, and polygons (best for discrete objects like roads/property boundaries).
+            </div>
+        </details>
+
+        <details>
+            <summary>12. Why does the Mercator projection distort area at the poles?</summary>
+            <div class="answer-key">
+                It is a <strong>Cylindrical</strong> projection. To keep lines of longitude parallel (straight up/down) instead of converging at the poles, it stretches the map horizontally and vertically as you move away from the Equator.
+            </div>
+        </details>
+
+        <details>
+            <summary>13. You have an 8-bit image. What is the maximum pixel value?</summary>
+            <div class="answer-key">
+                <strong>255</strong>. (2^8 = 256 possible values, ranging from 0 to 255).
+            </div>
+        </details>
+
+        <details>
+            <summary>14. What is the "Orange Peel Problem" in mapping?</summary>
+            <div class="answer-key">
+                The mathematical impossibility of flattening a 3D sphere onto a 2D plane without tearing, stretching, or compressing it (distortion).
+            </div>
+        </details>
+
+        <details>
+            <summary>15. True or False: A "Red State / Blue State" map is immune to the MAUP.</summary>
+            <div class="answer-key">
+                 <strong>False.</strong> It is a classic example. Changing the boundaries (e.g., from State to County) completely changes the visual story.
+            </div>
+        </details>
+
+        <details>
+            <summary>16. What does a "False Color Composite" (NIR, Red, Green) help visualize?</summary>
+            <div class="answer-key">
+                It makes vegetation pop out in bright <strong>Red</strong>. This leverages the high reflectance of healthy plants in the Near-Infrared (NIR) band.
+            </div>
+        </details>
+
+        <details>
+            <summary>17. Why is "Temporal Resolution" important for disaster response?</summary>
+            <div class="answer-key">
+                It determines how often a satellite revisits the same spot. In a rapidly changing disaster (flood/fire), you need daily (or hourly) images, not just one every 16 days.
+            </div>
+        </details>
+
+        <details>
+            <summary>18. In GIS logic, what does "Forest AND Elevation > 1000m" do?</summary>
+            <div class="answer-key">
+                It acts as a <strong>filter (Intersection)</strong>. It selects only those areas that meet *BOTH* criteria simultaneously.
+            </div>
+        </details>
+
+        <details>
+            <summary>19. Which coordinate system layer uses "Easting and Northing"?</summary>
+            <div class="answer-key">
+                A <strong>Projected Coordinate System</strong> (like UTM). These are Cartesian coordinates (X, Y) on a flat 2D plane, unlike Lat/Long which are angles.
+            </div>
+        </details>
+
+        <h3 style="margin-top: 3rem; border-top: 2px dashed var(--french-red); padding-top: 2rem;">🚀 Advanced Scenario Practice</h3>
+        
+        <details>
+            <summary>20. Scenario: Mapping Air Quality. You have (A) Average pollution levels by city district (Discrete) and (B) Continuous sensor node data (Continuous). Which map type for each?</summary>
+            <div class="answer-key">
+                <ul>
+                    <li><strong>(A) By District:</strong> Use a <strong>Choropleth Map</strong>. It colors defined areas (polygons) based on a value.</li>
+                    <li><strong>(B) Continuous Data:</strong> Use an <strong>Isopleth Map</strong> (Heatmap/Contour). Air pollution drifts continuously across borders; it doesn't stop at a city line.</li>
+                </ul>
+            </div>
+        </details>
+
+        <details>
+            <summary>21. Scenario: Global Forest Map. Why is the Mercator projection a poor choice for comparing the size of the Amazon Rainforest (Equator) vs. the Siberian Taiga (High North)?</summary>
+            <div class="answer-key">
+                Mercator maps are <strong>Conformal</strong> (good for shapes/angles) but not <strong>Equal Area</strong>. It severely stretches areas near the poles. The Taiga would look disproportionately huge compared to the Amazon, misleading the viewer about the actual amount of forest cover.
+            </div>
+        </details>
+
+        <details>
+            <summary>22. Calculate: Convert Sydney Opera House Coordinates (33° 51' 24" S, 151° 12' 36" E) to Decimal Degrees.</summary>
+            <div class="answer-key">
+                <ul>
+                    <li><strong>Latitude (South is Negative):</strong> -(33 + 51/60 + 24/3600) = -(33 + 0.85 + 0.0067) = <strong>-33.8567</strong></li>
+                    <li><strong>Longitude (East is Positive):</strong> 151 + 12/60 + 36/3600 = 151 + 0.2 + 0.01 = <strong>151.21</strong></li>
+                </ul>
+            </div>
+        </details>
+
+        <details>
+            <summary>23. Scenario: The "Fake Grass" Detective. A soccer field looks bright green (RGB) but has a very low NDVI (0.05). Why?</summary>
+            <div class="answer-key">
+                It is likely <strong>Artificial Turf (Plastic)</strong>. While it reflects Green light (looking real to the eye), plastic does NOT have the cell structure to reflect <strong>Near-Infrared (NIR)</strong> light. Real grass would reflect NIR strongly, resulting in a high NDVI (> 0.6).
+            </div>
+        </details>
+
+        <details>
+            <summary>24. Scenario: Oil Spill Tracking. You need to monitor a rapidly spreading oil spill. Which two resolutions are critical?</summary>
+            <div class="answer-key">
+                <ol>
+                    <li><strong>Temporal Resolution:</strong> Critical. You need images *every few hours or days* to see where the oil is moving. A 16-day revisit time is useless here.</li>
+                    <li><strong>Spectral Resolution:</strong> Important. You need specific bands (Thermal/IR) to distinguish oil from water.</li>
+                </ol>
+            </div>
+        </details>
+      </section>
+
+      <!-- GLOSSARY -->
+      <section id="glossary">
+        <h2>📚 Glossary</h2>
+        <div class="glossary-grid">
+          <div class="term-card">
+            <span class="term">Atmospheric Window</span>
+            Wavelengths of light that can pass through the atmosphere (e.g.,
+            visible light) without being absorbed. Sensors are designed to look
+            through these "windows."
+          </div>
+          <div class="term-card">
+            <span class="term">Geoid</span>
+            The most accurate Earth model based on gravity/mean sea level. It is
+            lumpy and irregular, unlike the smooth mathematical Ellipsoid.
+          </div>
+          <div class="term-card">
+            <span class="term">Structure from Motion (SfM)</span>
+            A technique using drone photography (2D images) to build 3D models.
+          </div>
+          <div class="term-card">
+            <span class="term">WGS 84</span>
+            The standard "Ellipsoid" model used by GPS. It defines the
+            coordinate system for the planet.
+          </div>
+          <div class="term-card">
+            <span class="term">False Color Composite</span>
+            An image where bands are assigned to wrong colors (e.g., NIR
+            displayed as Red) to highlight features like vegetation.
+          </div>
+          <div class="term-card">
+            <span class="term">MAUP</span>
+            Modifiable Areal Unit Problem. The statistical bias that occurs when
+            you aggregate data into arbitrary zones (like states).
+          </div>
+          <div class="term-card">
+            <span class="term">Centrifugal Force</span>
+            The outward force caused by Earth's rotation, making it bulge at the equator (creating an Ellipsoid).
+          </div>
+          <div class="term-card">
+            <span class="term">Geodetic Datum</span>
+            A reference system (like WGS 84) that positions the ellipsoid relative to Earth's center. Essential for GPS.
+          </div>
+          <div class="term-card">
+            <span class="term">Point Cloud</span>
+            A massive collection of X,Y,Z points generated by LiDAR, representing the 3D surface of the world.
+          </div>
+          <div class="term-card">
+            <span class="term">Map Algebra</span>
+            Math applied to raster pixels. Example: (Band 4 - Band 3) to calculate NDVI.
+          </div>
+          <div class="term-card">
+            <span class="term">Boolean Logic</span>
+            True/False logic used in GIS analysis (e.g., Select pixels where Elevation > 100 AND Land Cover = 'Forest').
+          </div>
+          <div class="term-card">
+            <span class="term">Impervious Surface</span>
+            Man-made surfaces (asphalt, concrete) that water cannot penetrate. High runoff, low NDVI.
+          </div>
+          <div class="term-card">
+            <span class="term">Lambert Conformal Conic</span>
+            A "cone-based" projection best for areas extending East-West (like the USA or Tennessee).
+          </div>
+          <div class="term-card">
+            <span class="term">Transverse Mercator</span>
+            A "cylinder-based" projection turned sideways, best for areas extending North-South (like Chile or UTM zones).
+          </div>
+          <div class="term-card">
+            <span class="term">Equal Area Projection</span>
+            A map projection that maintains the correct relative sizes of areas (e.g., Albers Equal Area). Essential for density maps.
+          </div>
+          <div class="term-card">
+            <span class="term">Equidistant Projection</span>
+            A map projection that maintains accurate distances from one or two specific points to all other points.
+          </div>
+          <div class="term-card">
+            <span class="term">Conformal Projection</span>
+            A map projection that preserves local angles and shapes (e.g., Mercator). Grid lines intersect at 90 degrees.
+          </div>
+          <div class="term-card">
+            <span class="term">Orthometric Height (H)</span>
+            The elevation above the Geoid (Mean Sea Level). This is the height found on topographic maps.
+          </div>
+          <div class="term-card">
+            <span class="term">Ellipsoidal Height (h)</span>
+            The height above the reference ellipsoid. This is the raw height measured by a GPS receiver.
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <footer>
+      <p>
+        &copy; 2026 Dr. Anwar Sounny-Slitine | International Space University
+      </p>
+    </footer>
+  </body>
+</html>
